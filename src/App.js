@@ -3,7 +3,7 @@ import React, { Component }  from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class App extends Component { //Class component
 
   constructor() { 
     super();
@@ -19,13 +19,12 @@ class App extends Component {
     .then((response) => response.json())   //transforming this data into JSON (readable data)
     .then((users) => this.setState(() => {  //setting our current State to the new State as feched data
       return {monsters: users}
-    }, 
-    () => {console.log(this.state)}  // optional if we want to see in console our feched data
+    } 
     ));
   }
 
-  onSearchChange = (event) => {console.log(event.target.value); //listenning changes what we type in input field
-    const searchField=event.target.value.toLocaleLowerCase();
+  onSearchChange = (event) => { //listenning changes what we type in input field
+    const searchField=event.target.value.toLocaleLowerCase();//making input in searchfield key insensitive making them all lower case.
     this.setState(()=>{
     return {searchField};
     });
