@@ -1,20 +1,19 @@
 import React, { Component }  from 'react';
-
-import logo from './logo.svg';
+import CardList from './components/card-list/card-list.component'; //importing our CardList component to App.js
 import './App.css';
 
 class App extends Component { //Class component
 
-  constructor() { 
+  constructor() { //always using constructor function for Class component
     super();
 
-    this.state = { 
+    this.state = {  //defining our initial state
     monsters:[],
     searchField:''
     };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
   }
 
-  componentDidMount(){
+  componentDidMount(){  //life cycle component 
     fetch('https://jsonplaceholder.typicode.com/users') //getting data from some site
     .then((response) => response.json())   //transforming this data into JSON (readable data)
     .then((users) => this.setState(() => {  //setting our current State to the new State as feched data
@@ -49,11 +48,7 @@ class App extends Component { //Class component
   placeholder='search monsters' 
   onChange={onSearchChange} 
   />
-    
-    { filteredMonsters.map((monster) => {   //getting our monster mapping throug the array one by one
-      return <div key={monster.id}><h1 > {monster.name} </h1></div>
-      })
-    }
+    <CardList monsters = {filteredMonsters} />
     </div>
   );
   }
